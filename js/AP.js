@@ -1,14 +1,38 @@
 'use strict';
+let houres = ['6 am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 let Seattle = {
     name: 'Seattle',
-    rand: 0,
+    randcost: [],
     Min: 23,
     Max: 65,
     AvgCookies: 63,
-    getcokie: function (max, min) {
-        this.rand = Math.floor(Math.random() * (max - min + 1) + min);
-        console.log(this.rand);
+    avergcokebyh: [],
+    total: 0,
+    getrandhour: function () {
+        for (let i = 0; i < houres.length; i++) {
+            let min = Math.ceil(this.Min);
+            let max = Math.floor(this.Max);
+
+            let random = Math.floor(Math.random() * (max - min) + min);
+            this.randcost.push(random);
+
+
+        }
+
     },
+    getaveragbyhour: function () {
+        for (let i = 0; i < houres.length; i++) {
+            this.avergcokebyh[i] = Math.floor(this.randcost[i] * this.AvgCookies);
+            this.total = this.total + this.avergcokebyh[i];
+
+        }
+
+
+    },
+
+
+
+
     render: function () {
         let divEl = document.getElementById('salamon');
         let artEL = document.createElement('article');
@@ -18,28 +42,23 @@ let Seattle = {
         artEL.appendChild(h1el);
         h1el.textContent = this.name;
 
-        let h2el = document.createElement('h2');
-        artEL.appendChild(h2el);
-        h2el.textContent = `the max is : ${this.Max}`;
 
-        let h3el = document.createElement('h3');
-        artEL.appendChild(h3el);
-        h3el.textContent = `the min is : ${this.Min}`;
-
-        let h4el = document.createElement('h4');
-        artEL.appendChild(h4el);
-        h4el.textContent = `the AvgCookies is : ${this.AvgCookies}`;
 
 
         let ulel = document.createElement('ul');
         artEL.appendChild(ulel);
 
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < houres.length; i++) {
             let liel = document.createElement('li');
             ulel.appendChild(liel);
-            liel.textContent = `at${i + 6} the random is${this.rand} `;
+            liel.textContent = `at ${houres[i]} ${this.avergcokebyh[i]} cookies `;
+
+
 
         }
+        let li1el = document.createElement('li');
+        ulel.appendChild(li1el);
+        li1el.textContent = 'total' + this.total + 'cokes';
 
 
 
@@ -47,21 +66,48 @@ let Seattle = {
     }
 
 };
-Seattle.getcokie(Seattle.Max, Seattle.Min);
 
-Seattle.render(Seattle.Max, Seattle.Min);
+Seattle.getrandhour();
+Seattle.getaveragbyhour();
+
+Seattle.render();
+
+
 
 
 let Tokyo = {
     name: 'Tokyo',
-    rand: 0,
-    Min: 3,
-    Max: 24,
-    AvgCookies: 12,
-    getcokie: function (max, min) {
-        this.rand = Math.floor(Math.random() * (max - min + 1) + min);
-        console.log(this.rand);
+    randcost: [],
+    Min: 12,
+    Max: 46,
+    AvgCookies: 42,
+    avergcokebyh: [],
+    total: 0,
+    getrandhour: function () {
+        for (let i = 0; i < houres.length; i++) {
+            let min = Math.ceil(this.Min);
+            let max = Math.floor(this.Max);
+
+            let random = Math.floor(Math.random() * (max - min) + min);
+            this.randcost.push(random);
+
+
+        }
+
     },
+    getaveragbyhour: function () {
+        for (let i = 0; i < houres.length; i++) {
+            this.avergcokebyh[i] = Math.floor(this.randcost[i] * this.AvgCookies);
+            this.total = this.total + this.avergcokebyh[i];
+
+        }
+
+
+    },
+
+
+
+
     render: function () {
         let divEl = document.getElementById('salamon');
         let artEL = document.createElement('article');
@@ -71,28 +117,23 @@ let Tokyo = {
         artEL.appendChild(h1el);
         h1el.textContent = this.name;
 
-        let h2el = document.createElement('h2');
-        artEL.appendChild(h2el);
-        h2el.textContent = `the max is : ${this.Max}`;
 
-        let h3el = document.createElement('h3');
-        artEL.appendChild(h3el);
-        h3el.textContent = `the min is : ${this.Min}`;
-
-        let h4el = document.createElement('h4');
-        artEL.appendChild(h4el);
-        h4el.textContent = `the AvgCookies is : ${this.AvgCookies}`;
 
 
         let ulel = document.createElement('ul');
         artEL.appendChild(ulel);
 
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < houres.length; i++) {
             let liel = document.createElement('li');
             ulel.appendChild(liel);
-            liel.textContent = `at${i + 6} the random is${this.rand} `;
+            liel.textContent = `at ${houres[i]} ${this.avergcokebyh[i]} cookies `;
+
+
 
         }
+        let li1el = document.createElement('li');
+        ulel.appendChild(li1el);
+        li1el.textContent = 'total' + this.total + 'cokes';
 
 
 
@@ -100,20 +141,47 @@ let Tokyo = {
     }
 
 };
-Tokyo.getcokie(Seattle.Max, Seattle.Min);
 
-Tokyo.render(Seattle.Max, Seattle.Min);
+Tokyo.getrandhour();
+Tokyo.getaveragbyhour();
 
-let Dubai = {
+Tokyo.render();
+
+
+
+let Dubai= {
     name: 'Dubai',
-    rand: 0,
-    Min: 11,
-    Max: 38,
-    AvgCookies:37,
-    getcokie: function (max, min) {
-        this.rand = Math.floor(Math.random() * (max - min + 1) + min);
-        console.log(this.rand);
+    randcost: [],
+    Min: 12,
+    Max: 25,
+    AvgCookies: 23,
+    avergcokebyh: [],
+    total: 0,
+    getrandhour: function () {
+        for (let i = 0; i < houres.length; i++) {
+            let min = Math.ceil(this.Min);
+            let max = Math.floor(this.Max);
+
+            let random = Math.floor(Math.random() * (max - min) + min);
+            this.randcost.push(random);
+
+
+        }
+
     },
+    getaveragbyhour: function () {
+        for (let i = 0; i < houres.length; i++) {
+            this.avergcokebyh[i] = Math.floor(this.randcost[i] * this.AvgCookies);
+            this.total = this.total + this.avergcokebyh[i];
+
+        }
+
+
+    },
+
+
+
+
     render: function () {
         let divEl = document.getElementById('salamon');
         let artEL = document.createElement('article');
@@ -123,28 +191,23 @@ let Dubai = {
         artEL.appendChild(h1el);
         h1el.textContent = this.name;
 
-        let h2el = document.createElement('h2');
-        artEL.appendChild(h2el);
-        h2el.textContent = `the max is : ${this.Max}`;
 
-        let h3el = document.createElement('h3');
-        artEL.appendChild(h3el);
-        h3el.textContent = `the min is : ${this.Min}`;
-
-        let h4el = document.createElement('h4');
-        artEL.appendChild(h4el);
-        h4el.textContent = `the AvgCookies is : ${this.AvgCookies}`;
 
 
         let ulel = document.createElement('ul');
         artEL.appendChild(ulel);
 
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < houres.length; i++) {
             let liel = document.createElement('li');
             ulel.appendChild(liel);
-            liel.textContent = `at${i + 6} the random is${this.rand} `;
+            liel.textContent = `at ${houres[i]} ${this.avergcokebyh[i]} cookies `;
+
+
 
         }
+        let li1el = document.createElement('li');
+        ulel.appendChild(li1el);
+        li1el.textContent = 'total' + this.total + 'cokes';
 
 
 
@@ -152,21 +215,46 @@ let Dubai = {
     }
 
 };
-Dubai.getcokie(Seattle.Max, Seattle.Min);
 
-Dubai.render(Seattle.Max, Seattle.Min);
+Dubai.getrandhour();
+Dubai.getaveragbyhour();
+
+Dubai.render();
 
 
 let Paris = {
     name: 'Paris',
-    rand: 0,
-    Min: 20,
-    Max: 38,
-    AvgCookies:23,
-    getcokie: function (max, min) {
-        this.rand = Math.floor(Math.random() * (max - min + 1) + min);
-        console.log(this.rand);
+    randcost: [],
+    Min: 7,
+    Max: 39,
+    AvgCookies: 2.3,
+    avergcokebyh: [],
+    total: 0,
+    getrandhour: function () {
+        for (let i = 0; i < houres.length; i++) {
+            let min = Math.ceil(this.Min);
+            let max = Math.floor(this.Max);
+
+            let random = Math.floor(Math.random() * (max - min) + min);
+            this.randcost.push(random);
+
+
+        }
+
     },
+    getaveragbyhour: function () {
+        for (let i = 0; i < houres.length; i++) {
+            this.avergcokebyh[i] = Math.floor(this.randcost[i] * this.AvgCookies);
+            this.total = this.total + this.avergcokebyh[i];
+
+        }
+
+
+    },
+
+
+
+
     render: function () {
         let divEl = document.getElementById('salamon');
         let artEL = document.createElement('article');
@@ -176,28 +264,23 @@ let Paris = {
         artEL.appendChild(h1el);
         h1el.textContent = this.name;
 
-        let h2el = document.createElement('h2');
-        artEL.appendChild(h2el);
-        h2el.textContent = `the max is : ${this.Max}`;
 
-        let h3el = document.createElement('h3');
-        artEL.appendChild(h3el);
-        h3el.textContent = `the min is : ${this.Min}`;
-
-        let h4el = document.createElement('h4');
-        artEL.appendChild(h4el);
-        h4el.textContent = `the AvgCookies is : ${this.AvgCookies}`;
 
 
         let ulel = document.createElement('ul');
         artEL.appendChild(ulel);
 
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < houres.length; i++) {
             let liel = document.createElement('li');
             ulel.appendChild(liel);
-            liel.textContent = `at${i + 6} the random is${this.rand} `;
+            liel.textContent = `at ${houres[i]} ${this.avergcokebyh[i]} cookies `;
+
+
 
         }
+        let li1el = document.createElement('li');
+        ulel.appendChild(li1el);
+        li1el.textContent = 'total' + this.total + 'cokes';
 
 
 
@@ -205,23 +288,47 @@ let Paris = {
     }
 
 };
-Paris.getcokie(Seattle.Max, Seattle.Min);
 
-Paris.render(Seattle.Max, Seattle.Min);
+Paris.getrandhour();
+Paris.getaveragbyhour();
 
+Paris.render();
 
 
 
 let Lima = {
     name: 'Lima',
-    rand: 0,
-    Min: 2,
-    Max: 16,
-    AvgCookies:48,
-    getcokie: function (max, min) {
-        this.rand = Math.floor(Math.random() * (max - min + 1) + min);
-        console.log(this.rand);
+    randcost: [],
+    Min: 12,
+    Max: 27,
+    AvgCookies: 4.2,
+    avergcokebyh: [],
+    total: 0,
+    getrandhour: function () {
+        for (let i = 0; i < houres.length; i++) {
+            let min = Math.ceil(this.Min);
+            let max = Math.floor(this.Max);
+
+            let random = Math.floor(Math.random() * (max - min) + min);
+            this.randcost.push(random);
+
+
+        }
+
     },
+    getaveragbyhour: function () {
+        for (let i = 0; i < houres.length; i++) {
+            this.avergcokebyh[i] = Math.floor(this.randcost[i] * this.AvgCookies);
+            this.total = this.total + this.avergcokebyh[i];
+
+        }
+
+
+    },
+
+
+
+
     render: function () {
         let divEl = document.getElementById('salamon');
         let artEL = document.createElement('article');
@@ -231,28 +338,23 @@ let Lima = {
         artEL.appendChild(h1el);
         h1el.textContent = this.name;
 
-        let h2el = document.createElement('h2');
-        artEL.appendChild(h2el);
-        h2el.textContent = `the max is : ${this.Max}`;
 
-        let h3el = document.createElement('h3');
-        artEL.appendChild(h3el);
-        h3el.textContent = `the min is : ${this.Min}`;
-
-        let h4el = document.createElement('h4');
-        artEL.appendChild(h4el);
-        h4el.textContent = `the AvgCookies is : ${this.AvgCookies}`;
 
 
         let ulel = document.createElement('ul');
         artEL.appendChild(ulel);
 
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < houres.length; i++) {
             let liel = document.createElement('li');
             ulel.appendChild(liel);
-            liel.textContent = `at${i + 6} the random is${this.rand} `;
+            liel.textContent = `at ${houres[i]} ${this.avergcokebyh[i]} cookies `;
+
+
 
         }
+        let li1el = document.createElement('li');
+        ulel.appendChild(li1el);
+        li1el.textContent = 'total' + this.total + 'cokes';
 
 
 
@@ -260,6 +362,8 @@ let Lima = {
     }
 
 };
-Lima.getcokie(Seattle.Max, Seattle.Min);
 
-Lima.render(Seattle.Max, Seattle.Min);
+Lima.getrandhour();
+Lima.getaveragbyhour();
+
+Lima.render();
