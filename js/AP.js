@@ -1,7 +1,7 @@
 'use strict';
 let salamonstore = [];
 // let randcost = [];
-let totalBIG=0;
+let totalBIG = 0;
 let houres = ['6 am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 let container = document.getElementById('salamon');
 let tableEl = document.createElement('table');
@@ -93,14 +93,14 @@ function getfotter() {
             sum = sum + salamonstore[s].avergcokebyh[i];
 
         }
-        totalBIG=totalBIG+sum;
+        totalBIG = totalBIG + sum;
         tdEl2.textContent = sum;
         trEl.appendChild(tdEl2);
 
     } let tdtel = document.createElement('td');
-    tdtel.textContent=totalBIG;
+    tdtel.textContent = totalBIG;
     trEl.appendChild(tdtel);
-
+    // trEl.remove();
 }
 
 
@@ -137,10 +137,32 @@ Lima.getrandhour();
 Lima.getaveragbyhour();
 Lima.render();
 
-
 getfotter();
 
 
+let form2 = document.getElementById('form1');
+form2.addEventListener('submit', addstore);
+
+function addstore(event) {
+    event.preventDefault();
+    let nam2 = event.target.name1.value;
+    let max2 = event.target.max1.value;
+    let min2 = event.target.min1.value;
+    let averag2 = event.target.averag1.value;
+
+    let newcat = new SaLamoncockies(nam2, max2, min2, averag2);
+
+    newcat.getrandhour();
+    newcat.getaveragbyhour();
+   
+    tableEl.removeChild(tableEl.lastChild);
+    newcat.render();
+    
+    getfotter();
+
+
+}
+// getfotter();
 
 // for (let i = 0; i < houres.length; i++) {
 //     let trEl = document.createElement('tr');
